@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form } from './Form/Form';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -16,10 +17,10 @@ export class App extends Component {
 
   formSubmitHandler = contactData => {
     const array = this.state.contacts.map(contact => contact.name);
-
+    const newContsct = { ...contactData, id: nanoid() };
     !array.includes(contactData.name)
       ? this.setState(({ contacts }) => ({
-          contacts: [contactData, ...contacts],
+          contacts: [newContsct, ...contacts],
         }))
       : alert(`${contactData.name} is already in contacts.`);
   };
