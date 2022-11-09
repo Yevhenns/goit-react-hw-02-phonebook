@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import css from './Form.module.css';
 
 export class Form extends Component {
@@ -61,3 +63,6 @@ export class Form extends Component {
     );
   }
 }
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
